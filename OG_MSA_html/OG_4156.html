@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>JSAV alignments</title>
+<!-- JQuery and JQuery-UI -->
+<link href="scripts/jquery.css" rel="stylesheet" />
+<script type='text/javascript' src='scripts/jquery-1.10.2.min.js'></script>
+<script type='text/javascript' src='scripts//jquery-ui-1.10.4.custom.min.js'></script>
+
+<!-- JSAV -->
+<link href="scripts/JSAV.css" rel="stylesheet" />
+<script type='text/javascript' src='scripts/JSAV.js'></script>
+
+<!-- If using tooltipster -->
+<link href="scripts/tooltipster-master/css/tooltipster.css" rel="stylesheet" />
+<script type='text/javascript' src='scripts/tooltipster-master/js/jquery.tooltipster.min.js'></script>
+<script>
+function enableTooltipster()
+{
+   $(document).ready(function() {
+       $('.tooltip').tooltipster();
+   });
+}
+enableTooltipster();
+</script>
+<!-- END -->
+</head>
+<body>
+<h1>JSAV Alignment Display</h1>
+
+<button onclick="goBack()">Back to OG table</button>
+<script type='text/javascript'>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<script type='text/javascript'> 
+var MySeqs = [];
+MySeqs.push({id :"SJAG_00908", sequence :"MF------ELYSPSYVSSPVYSTPAGDESSSKFF-VQRKLNSAFDELAAN-----------QHVQLSQGQKRPSAAVKKVRRCGLCHEAGHNRTYCPHREQANPSSSSQ---HRPPVASDLSI-DRWVVRNENSQASQPLAASQLFSLQQANVVDNSAENVWSAANGNPPSDPGSLPSITSSFILPPVPLYDSSGVQGTDLLHFNLGPSD-------PVLEAPPASQSITTNSSCENGQNTCVSTPKTS----------AVPSYTRRG-PSEKVMVHFDDEDSAEFEYIFGSTQTFSSSTHKGGKGSNSKRLCFTRSQLREEYDCLLALLQPDYTPRNAQERERCLHLLNGILCR"});
+MySeqs.push({id :"Svers_SJAG_00908", sequence :"MF------ELYSPSYVSSPIYSTPAGDESSSKFS-VQRKFNSAFNELATN-----------QHVQPSQSQKRPSTTVKKVRRCGLCHEAGHNRTYCPRREQINPTSSSQ---HRPPVVSDMSI-DHWVVRNETSEASQPLAASQLFSL-QPNVVDNSTENAWSVENRNPQSDLGSLPSITSSFILPPVPLYDSPGVQGTDLLHFTLGPSD-------PVLEA-PNSQAITTNSSCENVQNSCVSTPKTS---------GALPNYTRKS-SSEKVTVHFDDEDSAEFEYIFGSTQTFSSSTHKGGKAANTKRLCFTRSQLREEYDCLLALLQPDYIPRTAQERERCLHLLNGILCH"});
+MySeqs.push({id :"SPBC31F10.08", sequence :"MENYTKSTTMCGKRKPTFEIYRESDFSKITNQGT------VTAFDIISNKETF-------SESKQLKKAKSRNVTLVDKNTKADKRYKSEKLSDYLLNQEHHK---------NSPKIINDVLV----IGKSDGLINSFPLSQNYISSS-ESQ---TSSGNVDIIGNDNS-----------------------------------HASPYL-------PKFELKSQSQSNHSNVVKNQPIKLCKKTEGGTNLDHNKSINGAVKSGTSKSANKDRIYVFYEDEEVMEYRYIFGS----RMQTKNHDINANNKRKIFYQNSF-SNFHLLHKIIQPNYEPASAEERKLCIEILDEVLQY"});
+MySeqs.push({id :"Spombe_related_SPBC31F10.08", sequence :"MENYTKSTTISGKRKPTSEIYWESDFSKKTNQGT------VTAFDIISNKETF-------SESKQLKKAKSRNASLVDKNTKTDKRYKSEKLSDYLLNQEHHK---------NSPKIINDVLV----IGKSDGLINSFPLSQNYISSS-ESQ---TSSGNVDIIGNDNS-----------------------------------HVSPYL-------PKFELKSQSQSNHSNAVKNQPIKLCKKTEGSTNLDHNKSINGAVKSGTSKSTIKDRIYVFYEDEEVMEYRYIFGS----RMQTKNHDINANNKRKIFYQNSF-SNFHLLHKIIQPNYEPASAEERKLCIEILNEVLQY"});
+MySeqs.push({id :"SPOG_03098", sequence :"MD----CLATFDHGLFSSELQDASLLPESLKQANKEQNQGITAFDVLSDNRTFKKERRTNTKRKRSEREQKKTCEKQPKKHIRQDNQVPEKLENYLKKKNPQTPVNIETLCPSAPMYIEDIIIRDTNMSKIETPVSSFPGSQP-ANSY-HGH---DAYSN----------------------------------------SLHFQLSPFSSRESPTNNLSRKESAKYGT----LKNAKESPYVKTPCYGNSKTNRS---------NSTSPKEKITVIYDDNEVRDYLYVFGS----RSQNKKQDYTVVAKKKSFQSTNC-ANFFLLKNLMDPKYIPETAEERSLCIQVLEEVLNP"});
+MySeqs.push({id :"SOCG_01355", sequence :"MN----CSADFNHRIFSSELQDEPAFGKLYEQANKGQAQGLTAFDVLSENKIIKPEKTHNTKRKRSEKEPKRLCPIQPRKHVKQSNETPEKLENFLKRKNTHTPINPKTVYPSAPMYIEDIIIRETEKSNMQTPVTSLPGTQS-LNSY-HGH---ESFGN----------------------------------------SLHFHLTPFSLGDSPSSQKSEKGCTNSGNNLSYIKNVKEDAPSKAPCPTYTKPNKI---------NSALPREKVVVIYDDDEVRDYLYVFGS----RSQHKKQDYSTVVKRKTFQSNNF-SNFTLLKNLVDPQYNPKTAEERSLCIQLLEEVLNT"});
+MySeqs.push({id :"Slind_SOCG_01355", sequence :"MN----CLAEFNHRLYSSELQDEPAPGKLYEQAYKDQGQGLTAFDILSDNKTFKPEKAHNTKRKRSEKEPKRLCSIQPRKHVKQNNETPEKLENFLKRKNTHTPINPKTVYPSVPMYIEDIIIRETEKSNSQTPATSLPGSQS-LNSY-QGH---ESFGN----------------------------------------SLHFHLTPFSLGDSPSSQKSEKGGTKNGNNPNYLKNAKEDLTGKTLCPSYTKTTKS---------NSASPREKVVVIYDDDEVRDYLYVFGS----RSQHKKQDYSTVVKRKTFQSNNV-SNFALLKNLVDPQFIPKTAEERSLCIQLLEEVLNT"});
+MySeqs.push({id :"SOMG_00593", sequence :"MN----CLAAFNHRLFSSELQDESALAKSFDQANKGQGQGLTAFDILSDNRTSKTEKYPNTKRKRSEKEPKRLCPIQPKKHIKQNYETPEKLQNFLKRKNTHTPIDANTVYPSAPMYIEDIIIRDTDRSKMQTPTTSLPGSQS-LNSY-NEH---ETFGN----------------------------------------SLHFQLTPFSSTDSSTSQKYEKEYKNYGNH---LKSAKQDPCGKIPCPTYTKTNKS---------NSTSPKEKVVIIYDDDEVRDYLYVFGS----RSQHKKQDYSAVAKKKTFQSNNF-SNFPLLKTLMDPHYIPKTAEERSLCIQLLEEVLNT"});
+MySeqs.push({id :"Sosmo_related_SOMG_00593", sequence :"MH----SLAAFNHRLFSSELQDESALAKSFEQANKGQGQGLTAFDILSDNKTFKTEKTPNTKRKRSEKEPKRLCPIQPKKHIKQNYETPEKLQNFLKRKNTHTPIDANTVYPSAPMYIEDIIIKDTDRSKMQTPTTSLPGSQS-LNSY-NEH---EHFGN----------------------------------------SLHFQLTPFSSTDSPTSQKYEKEYKNYGNH---LKSAKQDSCGKIPCPTYTRTNKS---------NSTSPKEKIVIIYDDDEVRDYLYVFGS----RSQHKKQDYSALAKKKTFQSNNF-SNFPLLKTLMDPHYIPKTAEERSLCIQLLEEVLNT"});
+
+
+</script>
+
+
+<div id='sequenceDisplay'>
+</div>
+
+
+<script type='text/javascript'>
+var opts = Array();
+opts.sortable = true;
+opts.selectable = true;
+opts.deletable = true;
+opts.border = false;
+opts.toggleDotify = true;
+opts.toggleNocolour = true;
+opts.fasta = true;
+opts.consensus = true;
+opts.colourScheme = "zappo";
+opts.selectColour = true;
+opts.callback = "enableTooltipster";
+
+function myAction(divId, sequences)
+{
+   var seqString = "";
+   for(var i=0; i<sequences.length; i++)
+   {
+       seqString += ">" + sequences[i].id + "\n";
+       seqString += sequences[i].sequence + "\n";
+   }
+   alert(seqString);
+}
+
+var MyOptions = Array();
+MyOptions.sortable = true;
+MyOptions.selectable = true;
+MyOptions.deletable = true;
+MyOptions.scrollX = "100%";
+MyOptions.scrollY = "800px";
+MyOptions.highlight = [24,34];
+MyOptions.submit = "http://www.bioinf.org.uk/software/jsav/echo.cgi";
+MyOptions.action = 'myAction';
+MyOptions.actionLabel = "My Action";
+MyOptions.toggleDotify = true;
+MyOptions.toggleNocolour = true;
+MyOptions.fasta = true;
+MyOptions.consensus = true;
+MyOptions.colourScheme = "zappo";
+MyOptions.selectColour = true;
+MyOptions.callback = "enableTooltipster";
+MyOptions.idSubmit = "http://www.bioinf.org.uk/software/jsav/echo.cgi?seq=";
+MyOptions.idSubmitClean = true;
+
+printJSAV('sequenceDisplay', MySeqs, MyOptions);
+
+
+</script>
+<br>
+</body>
+</html>

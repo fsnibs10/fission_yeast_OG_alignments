@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>JSAV alignments</title>
+<!-- JQuery and JQuery-UI -->
+<link href="scripts/jquery.css" rel="stylesheet" />
+<script type='text/javascript' src='scripts/jquery-1.10.2.min.js'></script>
+<script type='text/javascript' src='scripts//jquery-ui-1.10.4.custom.min.js'></script>
+
+<!-- JSAV -->
+<link href="scripts/JSAV.css" rel="stylesheet" />
+<script type='text/javascript' src='scripts/JSAV.js'></script>
+
+<!-- If using tooltipster -->
+<link href="scripts/tooltipster-master/css/tooltipster.css" rel="stylesheet" />
+<script type='text/javascript' src='scripts/tooltipster-master/js/jquery.tooltipster.min.js'></script>
+<script>
+function enableTooltipster()
+{
+   $(document).ready(function() {
+       $('.tooltip').tooltipster();
+   });
+}
+enableTooltipster();
+</script>
+<!-- END -->
+</head>
+<body>
+<h1>JSAV Alignment Display</h1>
+
+<button onclick="goBack()">Back to OG table</button>
+<script type='text/javascript'>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<script type='text/javascript'> 
+var MySeqs = [];
+MySeqs.push({id :"SPOG_05490", sequence :"MDAMNNTPATSNSSSLANNSPSKPTVTTSGAYWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"SPOG_05266", sequence :"MDALNNTPATSNSSSLANNAPSKPTVTTSGAYWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"SOCG_04438", sequence :"MESMNNT--NASSSSLMNNTPSKPTLTTSGAHWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"SOCG_04621", sequence :"MDAINNSSNNGNNSSLVNNAPSKPTVTTSGASWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"SOCG_00628", sequence :"MDAMNNTISSSTSSSLVNNAPSKPTVTSSNASWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"SOCG_01706", sequence :"MESMNNT--NASSSSLMNNTPSKPTLTTSGAHWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"SOCG_01876", sequence :"MDAINNSSNNGNNSSLVNNAPSKPTVTTSGASWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"SOCG_01895", sequence :"MDAINNSSNNGNNSSLVNNAPSKPTVTTSGASWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"Slind_SOCG_04438", sequence :"MEAMNNI--NASSSSLMSNTPSKPTLTTSGAHWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"Slind_SOCG_04621", sequence :"MDAMNNTSNNNNNSSLVNNAPSKPTVTTSGASWYQPKPPGMCVIA--------"});
+MySeqs.push({id :"Slind_SOCG_00628", sequence :"MDAMNNTSSSSTSSSLINNAPSKPTVTSSNASWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"Slind_SOCG_01706", sequence :"MEAMNNT--NATNSSLMNNAPSKPTVTTSGAHWYQPKPPAMCVIA--------"});
+MySeqs.push({id :"Slind_SOCG_01895", sequence :"MDAMNNTSNNNNNSSLVNNTPSKPTVTTSGASWYQPKPPGMCVIA--------"});
+MySeqs.push({id :"Slind_SOCG_01876", sequence :"MDAMNNTSNNNNNSSLVNNAPSKPTVTTSGASWYQPKPPGMCVIA--------"});
+MySeqs.push({id :"SOMG_00039", sequence :"MDAMNNT---SNNSTLANNAPSKPAVTVSAAQWYQPKPPGMWYGNFFFNTILY"});
+MySeqs.push({id :"SOMG_00058", sequence :"MDAMNNT---SNNSTLANNAPSKPAVTVSAAQWYQPKPPGMWYGNFFFNTILY"});
+MySeqs.push({id :"SOMG_00236", sequence :"MDSMKSN-TNTSSSSLVNNAPSKPTVTTSGAQWYQPKPPGMWYVELI--PLLN"});
+MySeqs.push({id :"SOMG_02481", sequence :"MDAMNNT---SNNSTLANNAPSKPAVTVSAAQWYQPKPPGMWYGNFFFYTILY"});
+MySeqs.push({id :"Sosmo_related_SOMG_00058", sequence :"MDAMNNT---SNNSTLANNAPSKPAVTVSAAQWYQPKPPGMWYGNSFFYTVLY"});
+MySeqs.push({id :"Sosmo_related_g4642", sequence :"MDAMNNN-ANAFSSTLVNNVPSKPTVTTSKAQWYQPKPPGMCVIS--------"});
+MySeqs.push({id :"Sosmo_related_SOMG_02481", sequence :"MDAMNNT---SNNSTLANNAPSKPAVTVSAAQWYQPKPPGMWYGNSFFYTVLY"});
+MySeqs.push({id :"Sosmo_related_SOMG_00039", sequence :"MDAMNNT---SNNSTLANNAPSKPAVTVSAAQWYQPKPPGMWYGNSFFYTVLY"});
+
+
+</script>
+
+
+<div id='sequenceDisplay'>
+</div>
+
+
+<script type='text/javascript'>
+var opts = Array();
+opts.sortable = true;
+opts.selectable = true;
+opts.deletable = true;
+opts.border = false;
+opts.toggleDotify = true;
+opts.toggleNocolour = true;
+opts.fasta = true;
+opts.consensus = true;
+opts.colourScheme = "zappo";
+opts.selectColour = true;
+opts.callback = "enableTooltipster";
+
+function myAction(divId, sequences)
+{
+   var seqString = "";
+   for(var i=0; i<sequences.length; i++)
+   {
+       seqString += ">" + sequences[i].id + "\n";
+       seqString += sequences[i].sequence + "\n";
+   }
+   alert(seqString);
+}
+
+var MyOptions = Array();
+MyOptions.sortable = true;
+MyOptions.selectable = true;
+MyOptions.deletable = true;
+MyOptions.scrollX = "100%";
+MyOptions.scrollY = "800px";
+MyOptions.highlight = [24,34];
+MyOptions.submit = "http://www.bioinf.org.uk/software/jsav/echo.cgi";
+MyOptions.action = 'myAction';
+MyOptions.actionLabel = "My Action";
+MyOptions.toggleDotify = true;
+MyOptions.toggleNocolour = true;
+MyOptions.fasta = true;
+MyOptions.consensus = true;
+MyOptions.colourScheme = "zappo";
+MyOptions.selectColour = true;
+MyOptions.callback = "enableTooltipster";
+MyOptions.idSubmit = "http://www.bioinf.org.uk/software/jsav/echo.cgi?seq=";
+MyOptions.idSubmitClean = true;
+
+printJSAV('sequenceDisplay', MySeqs, MyOptions);
+
+
+</script>
+<br>
+</body>
+</html>
