@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>Schizo_orthogroups (SOG)</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.PNG">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.PNG">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.PNG">
+  <link rel="manifest" href="/site.webmanifest">	
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+
+<!-- JQuery and JQuery-UI -->
+<link href="scripts/jquery.css" rel="stylesheet" />
+<script type='text/javascript' src='scripts/jquery-1.10.2.min.js'></script>
+<script type='text/javascript' src='scripts//jquery-ui-1.10.4.custom.min.js'></script>
+
+<!-- JSAV -->
+<link href="scripts/JSAV.css" rel="stylesheet" />
+<script type='text/javascript' src='scripts/JSAV.js'></script>
+
+<!-- If using tooltipster -->
+<link href="scripts/tooltipster-master/css/tooltipster.css" rel="stylesheet" />
+<script type='text/javascript' src='scripts/tooltipster-master/js/jquery.tooltipster.min.js'></script>
+<script>
+function enableTooltipster()
+{
+   $(document).ready(function() {
+       $('.tooltip').tooltipster();
+   });
+}
+enableTooltipster();
+</script>
+<!-- END -->
+</head>
+<body>
+<h1>JSAV Alignment Display</h1>
+
+<button onclick="goBack()">Back to OG table</button>
+<script type='text/javascript'>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<script type='text/javascript'>
+
+function alignmentTxtFileToObjectArray(fileAddress) {
+    // 通过AJAX同步请求获取文件内容
+    let txtObj = $.ajax({ url: fileAddress, async: false });
+    // 以 '>' 分割文件内容，获取每个FASTA条目的片段
+    let txtObjArray = txtObj.responseText.split(/>/);
+    let ObjArray = [];
+
+    // 从第二个元素开始遍历，因为第一个元素为空
+    for (let i = 1; i < txtObjArray.length; i++) {
+        // 以换行符分割当前FASTA条目的片段
+        let temp = txtObjArray[i].split(/\r?\n/);
+        // 第一个元素是序列的ID
+        let id = temp[0];
+        // 从第二个元素开始，将所有行合并成一个完整的序列
+        let sequence = temp.slice(1).join('');
+        // 将ID和序列组合成一个对象，并添加到结果数组中
+        ObjArray.push({ id: id, sequence: sequence });
+    }
+    return ObjArray;
+}
+
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
+const dataFilePath = `protein_einsi_alignment/${id}.AA.einsi.fasta`;
+
+var MySeqs = alignmentTxtFileToObjectArray(dataFilePath)
+</script>
+
+
+<div id='sequenceDisplay'>
+</div>
+
+<script type='text/javascript'>
+var opts = Array();
+opts.sortable = true;
+opts.selectable = true;
+opts.deletable = true;
+opts.border = false;
+opts.toggleDotify = true;
+opts.toggleNocolour = true;
+opts.fasta = true;
+opts.consensus = true;
+opts.colourScheme = "zappo";
+opts.selectColour = true;
+opts.callback = "enableTooltipster";
+
+function myAction(divId, sequences)
+{
+   var seqString = "";
+   for(var i=0; i<sequences.length; i++)
+   {
+       seqString += ">" + sequences[i].id + "\n";
+       seqString += sequences[i].sequence + "\n";
+   }
+   alert(seqString);
+}
+
+var MyOptions = Array();
+MyOptions.sortable = true;
+MyOptions.selectable = true;
+MyOptions.deletable = true;
+MyOptions.scrollX = "100%";
+MyOptions.scrollY = "800px";
+MyOptions.highlight = [24,34];
+MyOptions.submit = "http://www.bioinf.org.uk/software/jsav/echo.cgi";
+MyOptions.action = 'myAction';
+MyOptions.actionLabel = "My Action";
+MyOptions.toggleDotify = true;
+MyOptions.toggleNocolour = true;
+MyOptions.fasta = true;
+MyOptions.consensus = true;
+MyOptions.colourScheme = "zappo";
+MyOptions.selectColour = true;
+MyOptions.callback = "enableTooltipster";
+MyOptions.idSubmit = "http://www.bioinf.org.uk/software/jsav/echo.cgi?seq=";
+MyOptions.idSubmitClean = true;
+
+printJSAV('sequenceDisplay', MySeqs, MyOptions);
+
+
+</script>
+<br>
+</body>
+</html>
